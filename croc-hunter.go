@@ -20,7 +20,7 @@ func main() {
 
 	log.Println("Starting server...")
 
-	log.Println("release: " + release)
+	log.Println("release/power: " + release)
 	log.Println("commit: " + commit)
 	log.Println("powered: " + powered)
 

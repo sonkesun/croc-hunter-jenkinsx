@@ -94,7 +94,7 @@ spec:
           parallel(
             chrome: {
               dir('chrome') {
-                git url: 'https://github.com/cryptopunk3788/croc-hunter-selenium.git'
+                git url: 'https://github.com/carlossg/croc-hunter-selenium.git'
                 container('maven-chrome') {
                   sh '''
                   yum install -y jq
@@ -107,7 +107,7 @@ spec:
             },
             firefox: {
               dir('firefox') {
-                git url: 'https://github.com/cryptopunk3788/croc-hunter-selenium.git'
+                git url: 'https://github.com/carlossg/croc-hunter-selenium.git'
                 container('maven-firefox') {
                   sh '''
                   yum install -y jq

@@ -3,7 +3,7 @@ kind: Config
 build:
   tagPolicy:
     envTemplate:
-      template: "{{.DOCKER_REGISTRY}}/Cryptopunk3788/croc-hunter-jenkinsx:{{.VERSION}}"
+      template: "{{.DOCKER_REGISTRY}}/cryptopunk3788/croc-hunter-jenkinsx:{{.VERSION}}"
   artifacts:
   - imageName: changeme
     workspace: .
@@ -20,7 +20,7 @@ profiles:
   build:
     tagPolicy:
       envTemplate:
-        template: "{{.DOCKER_REGISTRY}}/Cryptopunk3788/croc-hunter-jenkinsx:{{.DIGEST_HEX}}"
+        template: "{{.DOCKER_REGISTRY}}/cryptopunk3788/croc-hunter-jenkinsx:{{.DIGEST_HEX}}"
     artifacts:
     - docker: {}
     local: {}
@@ -30,5 +30,5 @@ profiles:
       - name: croc-hunter-jenkinsx
         chartPath: charts/croc-hunter-jenkinsx
         setValueTemplates:
-          image.repository: "{{.DOCKER_REGISTRY}}/Cryptopunk3788/croc-hunter-jenkinsx"
+          image.repository: "{{.DOCKER_REGISTRY}}/cryptopunk3788/croc-hunter-jenkinsx"
           image.tag: "{{.TAG}}"

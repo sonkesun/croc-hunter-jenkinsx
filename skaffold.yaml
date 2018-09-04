@@ -1,0 +1,34 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.DOCKER_REGISTRY}}/Cryptopunk3788/croc-hunter-jenkinsx:{{.VERSION}}"
+  artifacts:
+  - imageName: changeme
+    workspace: .
+    docker:
+      buildArgs:
+        GIT_SHA: "{{.GIT_COMMIT}}"
+        WORKFLOW_RELEASE: "{{.VERSION}}"
+  local: {}
+deploy:
+  kubectl:
+    manifests:
+profiles:
+- name: dev
+  build:
+    tagPolicy:
+      envTemplate:
+        template: "{{.DOCKER_REGISTRY}}/Cryptopunk3788/croc-hunter-jenkinsx:{{.DIGEST_HEX}}"
+    artifacts:
+    - docker: {}
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: croc-hunter-jenkinsx
+        chartPath: charts/croc-hunter-jenkinsx
+        setValueTemplates:
+          image.repository: "{{.DOCKER_REGISTRY}}/Cryptopunk3788/croc-hunter-jenkinsx"
+          image.tag: "{{.TAG}}"
